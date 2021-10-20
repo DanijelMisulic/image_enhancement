@@ -5,10 +5,11 @@ Created on Mon Oct 18 19:46:07 2021
 
 @author: danijelmisulic
 """
+import os
 import subprocess
 import numpy as np
 import cv2
-from image_enhancement.test_model import enhance_wheels
+from tensorflow_enhancement.test_model import enhance_wheels
 
     
 #Auto exposure leveling through image magick
@@ -45,6 +46,8 @@ def calculate_brightness(image):
 if __name__ == "__main__":
     path_to_input_image = "input_image/opg.png"
     path_to_output_folder = "output"
+    os.makedirs(path_to_output_folder, exist_ok=True)
+    
     image = cv2.imread(path_to_input_image)
     
     brightness = calculate_brightness(image)
@@ -60,6 +63,6 @@ if __name__ == "__main__":
     before_after = np.hstack((image, result))
     
     cv2.imwrite(path_to_output_folder + "/tensorflow_applied.jpg", result)
-    cv2.imwrite(path_to_output_folder + "/before_after.jpg", before_after)
+    cv2.imwrite(path_to_output_folder + "/before_after_tensorflow.jpg", before_after)
     
 

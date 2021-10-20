@@ -23,7 +23,7 @@ def enhance_wheels(image):
 
     with tf.compat.v1.Session(config=tf.compat.v1.ConfigProto(gpu_options=gpu_options)) as sess:
         saver = tf.compat.v1.train.Saver()
-        path_to_model = "image_enhancement/enhancement_model/model" 
+        path_to_model = "tensorflow_enhancement/enhancement_model/model" 
         saver.restore(sess, path_to_model)
 
         image = image/255
