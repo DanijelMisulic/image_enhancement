@@ -1,4 +1,4 @@
-# Python scripts to preprocess dental images
+# Python scripts for preprocessing dental images
 
 Firstly create and activate new conda environment:
 
