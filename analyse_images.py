@@ -18,8 +18,11 @@ def apply_magick_exposure(image_path):
     subprocess.call(cmd, shell=True)
     
 #Image preprocessing through predefined raw therapee profile   
-def raw_therapee_preprocessing(image_path):
-    cmd = "rawtherapee-cli -q -f -o " + image_path + " -p raw_therapee_profiles/black.pp3 -Y -c output/raw_therapee_applied.jpg"
+def raw_therapee_preprocessing(image_path, output_folder):
+    cmd = "rawtherapee-cli -o " + output_folder + "/raw_therapee_applied.jpg" + " -p raw_therapee_profiles/profile.pp3 -n -Y -c " + image_path
+    #cmd = "rawtherapee-cli -o test/output.tiff -p Clarity.pp3 -t -Y -c test/test_image.jpg"
+
+    
     subprocess.run(cmd.split(" "))
 
 #Opencv CLAHE thresholding of image
@@ -44,12 +47,11 @@ def calculate_brightness(image):
 
 
 if __name__ == "__main__":
-    path_to_input_image = "input_image/opg.png"
+    path_to_input_image = "input_image/opg.jpg"
     path_to_output_folder = "output"
     os.makedirs(path_to_output_folder, exist_ok=True)
     
     image = cv2.imread(path_to_input_image)
-    
     brightness = calculate_brightness(image)
     
     result = apply_clahe(image)
@@ -57,7 +59,7 @@ if __name__ == "__main__":
     
     apply_magick_exposure(path_to_input_image)
     
-    #raw_therapee_preprocessing("input/opg.png")
+    raw_therapee_preprocessing(path_to_input_image, path_to_output_folder)
     
     result = enhance_wheels(image)
     before_after = np.hstack((image, result))
