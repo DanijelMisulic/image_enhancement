@@ -13,9 +13,8 @@ To install image magick on MacOs run this command:
     
     brew update && brew install imagemagick
 
-To install image magick on Ubuntu run these commands: 
+To install image magick on Ubuntu run this command: 
     
-    sudo apt install php php-common gcc
     sudo apt install imagemagick
 
 To install rawtherapee-cli on MacOs follow these instructions:
@@ -29,4 +28,4 @@ The whole system is tested on Ubuntu. In the input folder there is one example i
     
     python analyse_images.py 
 
-Keep in mind that running the script in the newly created environment will last much longer than any other runs. Output images will be saved into output folder with names reflecting which method has been done. 
+Keep in mind that running the script in the newly created environment will last longer than any other runs. Output images will be saved into output folder with names reflecting which method has been done. 
