@@ -20,9 +20,6 @@ def apply_magick_exposure(image_path):
 #Image preprocessing through predefined raw therapee profile   
 def raw_therapee_preprocessing(image_path, output_folder):
     cmd = "rawtherapee-cli -o " + output_folder + "/raw_therapee_applied.jpg" + " -p raw_therapee_profiles/profile.pp3 -n -Y -c " + image_path
-    #cmd = "rawtherapee-cli -o test/output.tiff -p Clarity.pp3 -t -Y -c test/test_image.jpg"
-
-    
     subprocess.run(cmd.split(" "))
 
 #Opencv CLAHE thresholding of image
@@ -43,7 +40,6 @@ def calculate_brightness(image):
     Y,Cr,Cb = cv2.split(YCrCbImage)
     mean_Y = np.mean(Y)
     return mean_Y
-
 
 
 if __name__ == "__main__":
